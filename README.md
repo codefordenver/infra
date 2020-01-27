@@ -32,3 +32,10 @@ examples:
 - `tk env add environments/prom-grafana/dev --namespace=prom-grafana-dev`
 - `tk env add environments/prom-grafana/stage --namespace=prom-grafana-stage`
 - `tk env add environments/prom-grafana/prod --namespace=prom-grafana-prod`
+
+*Note*: create namespace manually after adding a new environment
+
+- `kk create ns <project-enviornment>`
+
+*Port Forwarding*
+- `kk port-forward --namespace=<ns> deployments/<deploy> <local-port>:<pod-port>`
