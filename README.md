@@ -3,14 +3,24 @@
 ## DESCRIPTION
 - Declarative infrastructure project for codefordenver org 
 
+### DEPENDENCIES
+- [kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [kubectx](https://github.com/ahmetb/kubectx)
+- [tanka & jsonnet-bundler](https://tanka.dev/install)
+- [sops](https://github.com/mozilla/sops)
+- [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+
 ### SETUP
 - `jb install`
-
-### DEPENDENCIES
-- kubernetes
-- tanka
-- jb
-- sops
+- helpful kubernetes aliases and env vars
+```bash
+export KUBE_EDITOR="emacs" # vim / vscode - you pick
+alias gc="gcloud"
+alias kk="kubectl"
+alias mk="minikube"
+alias kcd="kubectx"
+alias kns="kubectl config set-context $(kubectl config current-context) --namespace "
+```
 
 ### TANKA
 
