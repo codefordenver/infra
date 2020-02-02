@@ -5,7 +5,7 @@
     "name": "dev"
   },
   "spec": {
-    "apiServer": "https://192.168.64.2:8443",
+    "apiServer": "https://192.168.99.100:8443",
     "namespace": "ghost-dev"
   }
 }
