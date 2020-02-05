@@ -36,8 +36,10 @@
       replicas=1,
       containers=[
         container.new(c.ghost.name, $._images.cfdBlog.ghost) +
-        container.withPorts([port.new("api", c.ghost.port)]) +
-        volumeMount.new(c.ghost.volume, c.ghost.mountPath),
+        container.withPorts([port.new("api", c.ghost.port)]),
+        container.withVolumeMountsMixin(
+          volumeMount.new(c.ghost.volume, c.ghost.mountPath)
+        ),
       ],
     ),
     service: $.util.serviceFor(self.deployment),
