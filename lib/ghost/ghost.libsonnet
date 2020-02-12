@@ -8,6 +8,7 @@
   local port = $.core.v1.containerPort,
   local service = $.core.v1.service,
   local volume = $.core.v1.volume,
+  local volumeMount = $.core.v1.volumeMount,
 
   // volume resource declaration
   local pvc  = {
@@ -36,9 +37,8 @@
       containers=[
         container.new(c.ghost.name, $._images.cfdBlog.ghost) +
         container.withPorts([port.new("api", c.ghost.port)]) +
-        container.withVolumes(c.ghost.volume, c.ghost.mountPath),
+        container.withVolumeMounts([volumeMount.new(c.ghost.volume, c.ghost.mountPath)]),
       ],
-
     ),
     service: $.util.serviceFor(self.deployment),
     volumes: pvc,
