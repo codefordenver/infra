@@ -39,7 +39,14 @@
         container.withPorts([port.new("api", c.ghost.port)]) +
         container.withVolumeMounts([volumeMount.new(c.ghost.volume, c.ghost.mountPath)]),
       ],
-    ),
+    ) +
+    deployment.mixin.spec.template.spec.withVolumes([{
+      name: "content",
+      persistentVolumeClaim: {
+        claimName: "blog-content",
+       }
+      },
+    ]),
     service: $.util.serviceFor(self.deployment),
     volumes: pvc,
   }
