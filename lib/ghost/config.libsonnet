@@ -7,6 +7,7 @@
        name: "ghost",
        volume: "content",
        mountPath: "/var/lib/ghost/content",
+       volumeName: "content",
        volumeSize: "5Gi",
       }
     }
