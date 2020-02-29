@@ -5,21 +5,22 @@
 
 ### DEPENDENCIES
 - [kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- [kubectx](https://github.com/ahmetb/kubectx)
+- [kubectx + kubens](https://github.com/ahmetb/kubectx)
 - [tanka & jsonnet-bundler](https://tanka.dev/install)
 - [sops](https://github.com/mozilla/sops)
 - [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+- jb `go get -u github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb`
 
 ### SETUP
 - `jb install`
 - helpful kubernetes aliases and env vars
 ```bash
-export KUBE_EDITOR="emacs" # vim / vscode - you pick
+export KUBE_EDITOR="emacs" # vim, vscode, etc..
 alias gc="gcloud"
 alias kk="kubectl"
 alias mk="minikube"
 alias kcd="kubectx"
-alias kns="kubectl config set-context $(kubectl config current-context) --namespace "
+alias kns="kubens"
 ```
 
 ### TANKA
