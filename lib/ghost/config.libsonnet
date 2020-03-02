@@ -5,12 +5,12 @@
     ghost: {
        port: 2368,
        name: "ghost",
-       volume: "content",
        mountPath: "/var/lib/ghost/content",
-       volumeName: "content",
        volumeSize: "5Gi",
-      }
-    }
+       volumeName: "ghost-persistent-storage",
+       claimName: "pv-claim",
+    },
+   },
   },
   _images+:: {
     // latest by default

@@ -15,7 +15,7 @@
     apiVersion: "v1",
     kind: "PersistentVolumeClaim",
     metadata: {
-      name: "blog-content",
+      name: c.ghost.claimName,
     },
     spec: {
       accessModes: [
@@ -36,14 +36,17 @@
       replicas=1,
       containers=[
         container.new(c.ghost.name, $._images.cfdBlog.ghost) +
-        container.withPorts([port.new("api", c.ghost.port)]) +
-        container.withVolumeMounts([volumeMount.new(c.ghost.volumeName, c.ghost.mountPath)]),
+        container.withPorts([port.new("http", c.ghost.port)]) +
+        container.withVolumeMounts([
+          // volumeMount.new(c.ghost.name, c.ghost.mountPath)
+          { mountPath: c.ghost.mountPath, name: c.ghost.name},
+        ]),
       ],
     ) +
     deployment.mixin.spec.template.spec.withVolumes([{
-      name: "content",
+      name: c.ghost.name,
       persistentVolumeClaim: {
-        claimName: "blog-content",
+        claimName: c.ghost.claimName,
        }
       },
     ]),
